@@ -1,0 +1,433 @@
+:root {
+  /* Colors */
+  --color-surface: #fcf9f3;
+  --color-surface-dim: #dcdad4;
+  --color-surface-bright: #fcf9f3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3ed;
+  --color-surface-container: #f0eee8;
+  --color-surface-container-high: #ebe8e2;
+  --color-surface-container-highest: #e5e2dc;
+  --color-on-surface: #1c1c18;
+  --color-on-surface-variant: #57423c;
+  --color-inverse-surface: #31312d;
+  --color-inverse-on-surface: #f3f0ea;
+  --color-outline: #8a726a;
+  --color-outline-variant: #dec0b8;
+  --color-surface-tint: #a23f1c;
+
+  --color-primary: #943512;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #b44c28;
+  --color-on-primary-container: #ffebe5;
+  --color-inverse-primary: #ffb59d;
+  --color-primary-fixed: #ffdbd0;
+  --color-primary-fixed-dim: #ffb59d;
+  --color-on-primary-fixed: #390b00;
+  --color-on-primary-fixed-variant: #822805;
+
+  --color-secondary: #465f88;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #b6d0ff;
+  --color-on-secondary-container: #3f5881;
+  --color-secondary-fixed: #d6e3ff;
+  --color-secondary-fixed-dim: #aec7f7;
+  --color-on-secondary-fixed: #001b3d;
+  --color-on-secondary-fixed-variant: #2e476f;
+
+  --color-tertiary: #804500;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #a35900;
+  --color-on-tertiary-container: #ffebdd;
+  --color-tertiary-fixed: #ffdcc2;
+  --color-tertiary-fixed-dim: #ffb77a;
+  --color-on-tertiary-fixed: #2e1500;
+  --color-on-tertiary-fixed-variant: #6d3a00;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-background: #fcf9f3;
+  --color-on-background: #1c1c18;
+  --color-surface-variant: #e5e2dc;
+
+  /* Typography */
+  --font-headline: 'Epilogue', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Border Radii */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.25rem;
+  --gutter: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(87, 66, 60, 0.08), 0 1px 2px rgba(148, 53, 18, 0.04);
+  --shadow-md: 0 4px 14px rgba(87, 66, 60, 0.1), 0 2px 6px rgba(148, 53, 18, 0.06);
+  --shadow-lg: 0 10px 25px -4px rgba(87, 66, 60, 0.12), 0 6px 12px -2px rgba(148, 53, 18, 0.08);
+  --shadow-terracotta: 0 8px 24px rgba(148, 53, 18, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Subtle Kora Linen tactile weave texture background overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h12v12H0z' fill='%23943512' fill-opacity='0.2'/%3E%3Cpath d='M12 12h12v12H12z' fill='%23465f88' fill-opacity='0.2'/%3E%3Cpath d='M0 12h1v12H0zm2 0h1v12H2zm4 0h1v12H6zm6-12h1v12h-1zm2 0h1v12h-1zm4 0h1v12h-1z' fill='%23804500' fill-opacity='0.15'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* Typography Utility Classes */
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.headline-xl {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.headline-lg {
+  font-family: var(--font-headline);
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.headline-md {
+  font-family: var(--font-headline);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.title-lg {
+  font-family: var(--font-headline);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.body-lg {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.body-md {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.label-lg {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.label-md {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.label-sm {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Needlework & Tactile Card borders */
+.tactile-card {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tactile-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-outline);
+}
+
+.needle-stitch-border {
+  border: 1.5px dashed var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+}
+
+.badge-gi {
+  background-color: var(--color-tertiary-fixed);
+  color: var(--color-on-tertiary-fixed);
+  border: 1px solid var(--color-tertiary);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-labor {
+  background-color: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+  border: 1px solid var(--color-primary-container);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.badge-indigo {
+  background-color: var(--color-secondary-fixed);
+  color: var(--color-on-secondary-fixed);
+  border: 1px solid var(--color-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Artisan Circular Seal */
+.artisan-seal {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  background: var(--color-surface-container-low);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Pulse animation for voice and audio */
+@keyframes voicePulse {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(148, 53, 18, 0.6);
+  }
+  70% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 16px rgba(148, 53, 18, 0);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(148, 53, 18, 0);
+  }
+}
+
+.animate-voice-pulse {
+  animation: voicePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes waveBar {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+
+.wave-bar {
+  animation: waveBar 1.2s ease-in-out infinite;
+}
+
+/* Button & control styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-container);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-terracotta);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-container-high);
+  border-color: var(--color-outline);
+}
+
+.btn-tertiary {
+  background-color: var(--color-tertiary);
+  color: var(--color-on-tertiary);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 40px;
+}
+
+.btn-tertiary:hover {
+  background-color: var(--color-tertiary-container);
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 28, 24, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-sheet {
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  max-width: 620px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Thermal receipt / waybill simulation */
+.thermal-receipt {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #fffdf7;
+  color: #111;
+  border: 1px dashed #777;
+  padding: 1.25rem;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.thermal-receipt::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: radial-gradient(circle, transparent, transparent 50%, #fffdf7 50%, #fffdf7 100%);
+  background-size: 12px 12px;
+}
+
+/* Range input / Stepper styling */
+input[type=range] {
+  accent-color: var(--color-primary);
+}
