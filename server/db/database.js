@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -12,10 +12,25 @@ if (!fs.existsSync(dbDir)) {
 }
 
 const dbPath = path.join(dbDir, 'kalaconnect.db');
-const db = new Database(dbPath);
+const db = new DatabaseSync(dbPath);
+
+// Transaction helper for node:sqlite compatibility
+db.transaction = (fn) => {
+  return (...args) => {
+    db.exec('BEGIN');
+    try {
+      const res = fn(...args);
+      db.exec('COMMIT');
+      return res;
+    } catch (e) {
+      db.exec('ROLLBACK');
+      throw e;
+    }
+  };
+};
 
 // Enable foreign keys
-db.pragma('foreign_keys = ON');
+db.exec('PRAGMA foreign_keys = ON;');
 
 // Initialize schema
 db.exec(`

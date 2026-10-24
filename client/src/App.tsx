@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 import { CataloguePage } from './pages/CataloguePage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { ArtisanProfilePage } from './pages/ArtisanProfilePage';
@@ -19,7 +20,7 @@ export function App() {
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <div className="min-h-screen bg-amber-50/20 text-stone-900 flex flex-col font-sans">
+          <div className="min-h-screen flex flex-col font-sans selection:bg-amber-200 selection:text-amber-950">
             <Navbar />
             <main className="flex-1">
               <Routes>
@@ -34,6 +35,7 @@ export function App() {
                 <Route path="/artisan/add-product" element={<AddProductPage />} />
               </Routes>
             </main>
+            <Footer />
           </div>
         </CartProvider>
       </AuthProvider>
