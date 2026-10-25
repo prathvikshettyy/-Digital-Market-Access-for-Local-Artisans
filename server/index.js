@@ -23,6 +23,7 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 app.use('/uploads', express.static(uploadsDir));
+app.use('/images', express.static(uploadsDir));
 
 // Multer storage configuration
 const storage = multer.diskStorage({

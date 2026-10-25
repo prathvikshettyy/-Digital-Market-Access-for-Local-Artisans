@@ -105,44 +105,65 @@ export const CataloguePage: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-amber-500/20 via-orange-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-amber-700/15 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs font-bold mb-3.5 backdrop-blur-md">
-            <ShieldCheck className="w-4 h-4 text-amber-300" />
-            <span>{i18n.language === 'kn' ? '೧೦೦% ನೇರ ಕುಶಲಕರ್ಮಿ ನ್ಯಾಯಸಮ್ಮತ ಸಂತೆ' : '100% Direct Fair-Trade • Artisan Ledger Certified'}</span>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs font-bold mb-3.5 backdrop-blur-md">
+              <ShieldCheck className="w-4 h-4 text-amber-300" />
+              <span>{i18n.language === 'kn' ? '೧೦೦% ನೇರ ಕುಶಲಕರ್ಮಿ ನ್ಯಾಯಸಮ್ಮತ ಸಂತೆ' : '100% Direct Fair-Trade • Artisan Ledger Certified'}</span>
+            </div>
+
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black font-headline tracking-tight text-white leading-[1.15] mb-3">
+              {i18n.language === 'kn' ? (
+                <>ಕರಾವಳಿ ಮತ್ತು ಡೆಕ್ಕನ್ <span className="text-amber-300 underline decoration-amber-500/50">ಜೀವಂತ ಪರಂಪರೆ</span></>
+              ) : (
+                <>Living Crafts of Coastal Karnataka <span className="text-amber-300 underline decoration-amber-500/40">& Deccan</span></>
+              )}
+            </h1>
+
+            <p className="text-xs sm:text-base text-amber-100/90 leading-relaxed mb-6 font-normal max-w-2xl">
+              {i18n.language === 'kn'
+                ? 'ಧಾರವಾಡದ 7ನೇ ಶತಮಾನದ ಕಸೂತಿ, ಕುಂದಾಪುರದ ಬೀಡು ತಾಳೆ ಹೆಣಿಗೆ ಮತ್ತು ಉಡುಪಿಯ ನೈಸರ್ಗಿಕ ಹತ್ತಿ ಕೈಮಗ್ಗ. ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ನೇರವಾಗಿ ಗ್ರಾಮದ ಕುಶಲಕರ್ಮಿಗಳಿಂದ ಪಡೆಯಿರಿ.'
+                : 'Direct provenance sanctuary for counted-thread Kasuti embroidery, forest-cured Beedu palm weaving, and GI-certified Udupi handlooms. Every piece pays a guaranteed ₹80/hr living wage directly to village artisans.'}
+            </p>
+
+            {/* Live Transparency Metric Chips */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-4 border-t border-amber-800/40">
+              <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
+                <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">100%</span>
+                <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Direct Pay to Artisan</span>
+              </div>
+              <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
+                <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">₹80 / hr</span>
+                <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Ethical Living Wage</span>
+              </div>
+              <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
+                <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">3,400+ hrs</span>
+                <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Heritage Preserved</span>
+              </div>
+              <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
+                <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">GI Tagged</span>
+                <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Govt. Verified Origin</span>
+              </div>
+            </div>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black font-headline tracking-tight text-white leading-[1.15] mb-3">
-            {i18n.language === 'kn' ? (
-              <>ಕರಾವಳಿ ಮತ್ತು ಡೆಕ್ಕನ್ <span className="text-amber-300 underline decoration-amber-500/50">ಜೀವಂತ ಪರಂಪರೆ</span></>
-            ) : (
-              <>Living Crafts of Coastal Karnataka <span className="text-amber-300 underline decoration-amber-500/40">& Deccan</span></>
-            )}
-          </h1>
-
-          <p className="text-xs sm:text-base text-amber-100/90 leading-relaxed mb-6 font-normal max-w-2xl">
-            {i18n.language === 'kn'
-              ? 'ಧಾರವಾಡದ 7ನೇ ಶತಮಾನದ ಕಸೂತಿ, ಕುಂದಾಪುರದ ಬೀಡು ತಾಳೆ ಹೆಣಿಗೆ ಮತ್ತು ಉಡುಪಿಯ ನೈಸರ್ಗಿಕ ಹತ್ತಿ ಕೈಮಗ್ಗ. ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ನೇರವಾಗಿ ಗ್ರಾಮದ ಕುಶಲಕರ್ಮಿಗಳಿಂದ ಪಡೆಯಿರಿ.'
-              : 'Direct provenance sanctuary for counted-thread Kasuti embroidery, forest-cured Beedu palm weaving, and GI-certified Udupi handlooms. Every piece pays a guaranteed ₹80/hr living wage directly to village artisans.'}
-          </p>
-
-          {/* Live Transparency Metric Chips */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-4 border-t border-amber-800/40">
-            <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
-              <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">100%</span>
-              <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Direct Pay to Artisan</span>
-            </div>
-            <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
-              <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">₹80 / hr</span>
-              <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Ethical Living Wage</span>
-            </div>
-            <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
-              <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">3,400+ hrs</span>
-              <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Heritage Preserved</span>
-            </div>
-            <div className="bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-amber-700/30">
-              <span className="text-lg sm:text-xl font-black text-amber-300 font-headline block">GI Tagged</span>
-              <span className="text-[10px] sm:text-[11px] text-amber-100/80 font-medium leading-tight block">Govt. Verified Origin</span>
+          {/* Master Artisan Showcase Card */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-2xl overflow-hidden border border-amber-500/30 shadow-2xl group">
+              <img
+                src="/images/artisan_hero.jpg"
+                alt="Master Artisan Rukmini Bai, Kasuti embroidery"
+                className="w-full h-64 sm:h-80 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-amber-300">Rukmini Bai • ರುಕ್ಮಿಣಿ ಬಾಯಿ</span>
+                  <span className="text-[10px] text-amber-200/80 bg-amber-900/60 px-2 py-0.5 rounded-full border border-amber-500/30">Dharwad</span>
+                </div>
+                <p className="text-[11px] text-stone-300 mt-1">Master Kasuti Needlewoman • 28 Years Heritage Craft</p>
+              </div>
             </div>
           </div>
         </div>
