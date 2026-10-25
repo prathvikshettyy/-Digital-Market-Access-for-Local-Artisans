@@ -18,9 +18,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Setup file uploads directory
-const uploadsDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+const isVercel = Boolean(process.env.VERCEL);
+const uploadsDir = isVercel ? path.join('/tmp', 'uploads') : path.join(__dirname, 'uploads');
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (e) {
+  console.warn('Could not create uploads directory:', e.message);
 }
 app.use('/uploads', express.static(uploadsDir));
 app.use('/images', express.static(uploadsDir));
@@ -351,7 +356,11 @@ app.post('/api/pricing/suggest', (req, res) => {
   }
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`KalaConnect Backend running on http://localhost:${PORT}`);
-});
+// Start Server if run as standalone process
+if (!isVercel && process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`KalaConnect Backend running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;

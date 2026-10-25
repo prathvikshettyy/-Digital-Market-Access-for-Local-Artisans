@@ -6,12 +6,28 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dbDir = __dirname;
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
+const isVercel = Boolean(process.env.VERCEL);
+let dbPath;
+
+if (isVercel) {
+  const tmpDb = path.join('/tmp', 'kalaconnect.db');
+  const sourceDb = path.join(__dirname, 'kalaconnect.db');
+  if (!fs.existsSync(tmpDb) && fs.existsSync(sourceDb)) {
+    try {
+      fs.copyFileSync(sourceDb, tmpDb);
+    } catch (e) {
+      console.warn('Could not copy db to /tmp, will initialize fresh:', e.message);
+    }
+  }
+  dbPath = fs.existsSync(tmpDb) ? tmpDb : path.join('/tmp', 'kalaconnect.db');
+} else {
+  const dbDir = __dirname;
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+  dbPath = path.join(dbDir, 'kalaconnect.db');
 }
 
-const dbPath = path.join(dbDir, 'kalaconnect.db');
 const db = new DatabaseSync(dbPath);
 
 // Transaction helper for node:sqlite compatibility
