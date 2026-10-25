@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, ShieldCheck, Search, Volume2, Sparkles, SlidersHorizontal, Check, ArrowRight, Heart, Award, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -25,11 +25,7 @@ export const CataloguePage: React.FC = () => {
   const [justAddedId, setJustAddedId] = useState<number | null>(null);
   const [playingVoiceId, setPlayingVoiceId] = useState<number | null>(null);
 
-  useEffect(() => {
-    fetchProducts();
-  }, [selectedCraft]);
-
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     setIsLoading(true);
     try {
       const url = selectedCraft === 'All' ? '/api/products' : `/api/products?craft=${encodeURIComponent(selectedCraft)}`;
@@ -43,7 +39,11 @@ export const CataloguePage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedCraft]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   const handleQuickAdd = (product: Product, e: React.MouseEvent) => {
     e.preventDefault();

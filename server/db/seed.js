@@ -8,6 +8,7 @@ db.exec(`
   DELETE FROM orders;
   DELETE FROM products;
   DELETE FROM artisans;
+  DELETE FROM sqlite_sequence WHERE name IN ('artisans', 'products', 'orders', 'order_items');
 `);
 
 const insertArtisan = db.prepare(`

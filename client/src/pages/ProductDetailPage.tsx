@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Clock, ShieldCheck, QrCode, ArrowLeft, Volume2, VolumeX, Sparkles,
@@ -25,11 +25,8 @@ export const ProductDetailPage: React.FC = () => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetchProduct();
-  }, [id]);
-
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
+    if (!id) return;
     setIsLoading(true);
     try {
       const res = await fetch(`/api/products/${id}`);
@@ -42,7 +39,11 @@ export const ProductDetailPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [fetchProduct]);
 
   const toggleOralStory = () => {
     if (isPlayingAudio) {
