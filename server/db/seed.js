@@ -39,7 +39,7 @@ const seedData = db.transaction(() => {
     phone: '9845234567',
     pin: '2345',
     bio: 'Custodian of coastal Beedu palm craft. Forages wild date palm fronds from Western Ghat foothills, curing with smoke and wild neem bark for natural insect resistance.',
-    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
+    photo: '/images/artisan_devamma.jpg'
   });
 
   // 3. Sanjeeva Shettigar
@@ -49,7 +49,7 @@ const seedData = db.transaction(() => {
     phone: '9845345678',
     pin: '3456',
     bio: '3rd-generation pit-loom weaver at Talipady Weavers Society. Crafts GI-tagged Malnad cottons treated with natural starch and fermented plant dye selvedges.',
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'
+    photo: '/images/artisan_sanjeeva.jpg'
   });
 
   // Products for Rukmini Bai (Kasuti)
@@ -63,7 +63,7 @@ const seedData = db.transaction(() => {
     technique: 'Gavanti (double running) and Murgi (zigzag ladder) stitches',
     materials: 'Pure handspun Kora silk-cotton with plant-dyed floss',
     hours: 42,
-    image: '/images/kasuti.jpg'
+    image: '/images/kasuti_saree.jpg'
   });
 
   insertProduct.run({
@@ -76,7 +76,7 @@ const seedData = db.transaction(() => {
     technique: 'Double running Gavanti and Negi weaving stitches',
     materials: 'Unbleached natural linen cloth, cotton embroidery thread',
     hours: 14,
-    image: '/images/kasuti.jpg'
+    image: '/images/kasuti_cushions.jpg'
   });
 
   insertProduct.run({
@@ -89,7 +89,7 @@ const seedData = db.transaction(() => {
     technique: 'Gavanti stitch, reversible finish',
     materials: 'Handwoven Malnad cotton with indigo & turmeric threads',
     hours: 18,
-    image: '/images/kasuti.jpg'
+    image: '/images/kasuti_runner.jpg'
   });
 
   // Products for Devamma Poojarthi (Beedu)
@@ -103,7 +103,7 @@ const seedData = db.transaction(() => {
     technique: 'Multi-rib cross interlock weaving',
     materials: 'Forest-foraged palmyra leaves, neem bark extract, bamboo rim',
     hours: 8,
-    image: '/images/beedu.jpg'
+    image: '/images/beedu_basket.jpg'
   });
 
   insertProduct.run({
@@ -116,7 +116,7 @@ const seedData = db.transaction(() => {
     technique: 'Radial spiraling herringbone weave',
     materials: 'Tender date palm fronds, natural wild madder dye wash',
     hours: 5,
-    image: '/images/beedu.jpg'
+    image: '/images/beedu_tray.jpg'
   });
 
   insertProduct.run({
@@ -129,7 +129,7 @@ const seedData = db.transaction(() => {
     technique: 'Tight circular braid with lock-stitch edge',
     materials: 'Sundried palmyra fronds',
     hours: 4,
-    image: '/images/beedu.jpg'
+    image: '/images/beedu_coasters.jpg'
   });
 
   // Products for Sanjeeva Shettigar (Handloom & Bidriware)
@@ -143,7 +143,7 @@ const seedData = db.transaction(() => {
     technique: 'Fly-shuttle pit loom weave with dobby border',
     materials: '80s combed pure cotton, natural arecanut dye',
     hours: 15,
-    image: '/images/udupi.jpg'
+    image: '/images/udupi_stole.jpg'
   });
 
   insertProduct.run({
@@ -156,7 +156,7 @@ const seedData = db.transaction(() => {
     technique: 'Two-pedal tie-up handloom weave',
     materials: 'Organic yarn, natural fermented indigo, temple turmeric',
     hours: 20,
-    image: '/images/udupi.jpg'
+    image: '/images/udupi_dupatta.jpg'
   });
 
   insertProduct.run({
